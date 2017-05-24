@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    name: status-server
+    type: backend
+  name: status-server
+  namespace: deploy-tracker
+spec:
+  clusterIP: None
+  ports: 
+    - name: grpc
+      port: 50051
+  selector:
+    name: status-server
+    type: backend 
+

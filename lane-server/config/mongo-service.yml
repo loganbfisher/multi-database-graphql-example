@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: mongodb 
+    type: db
+  name: mongodb
+  namespace: deploy-tracker
+spec:
+  clusterIP: None
+  ports:
+    - port: 27017
+      name: tcp
+  selector:
+    name: mongodb
+    type: db
+

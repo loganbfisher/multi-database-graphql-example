@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package entrance;
+
+service Entrance {
+  rpc SaveEntrance (EntranceRequest) returns (EntranceData);
+  rpc GetEntrancesByLotId (ByLotIdRequest) returns (EntrancesReply);
+  rpc GetEntranceSensorsById (ByEntranceIdRequest) returns (EntranceSensorsReply);
+  rpc SaveEntranceSensor (EntranceSensorRequest) returns (EntranceSensorResponse);
+}
+
+message EntranceSensorRequest {
+  string name = 2;
+  string entranceId = 3;
+}
+
+message EntranceSensorResponse {
+  string id = 1;
+  string name = 2;
+  string entranceId = 3;
+}
+
+message EntranceSensorsReply {
+  repeated EntranceSensorResponse entranceSensors = 1;
+}
+
+message ByLotIdRequest {
+  string lotId = 1;
+}
+
+message ByEntranceIdRequest {
+  string entranceId = 1;
+}
+
+message EntranceRequest {
+ string name = 1;
+ string lotId = 2;
+}
+
+message EntranceData {
+  string id = 1;
+  string name = 2;
+  string lotId = 3;
+}
+
+message EntrancesReply {
+  repeated EntranceData entrances = 1;
+}

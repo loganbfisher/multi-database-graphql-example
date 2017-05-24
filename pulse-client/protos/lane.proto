@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package lane;
+
+service Lane {
+  rpc SaveLane (LaneRequest) returns (LaneData);
+  rpc GetLanesByEntranceId (ByEntranceIdRequest) returns (LanesReply);
+  rpc GetLaneSensorsById (ByLaneIdRequest) returns (LaneSensorsReply);
+  rpc SaveLaneSensor (LaneSensorRequest) returns (LaneSensorResponse);
+}
+
+message LaneSensorRequest {
+  string name = 2;
+  string laneId = 3;
+}
+
+message LaneSensorResponse {
+  string id = 1;
+  string name = 2;
+  string laneId = 3;
+}
+
+message LaneSensorsReply {
+  repeated LaneSensorResponse laneSensors = 1;
+}
+
+message ByEntranceIdRequest {
+  string entranceId = 1;
+}
+
+message ByLaneIdRequest {
+  string laneId = 1;
+}
+
+message LaneRequest {
+ string name = 1;
+ string entranceId = 2;
+}
+
+message LaneData {
+  string id = 1;
+  string name = 2;
+  string entranceId = 3;
+}
+
+message LanesReply {
+  repeated LaneData lanes = 1;
+}

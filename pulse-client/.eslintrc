@@ -1,0 +1,18 @@
+{
+  "extends": "airbnb-base",
+  "parser": "babel-eslint",
+  "plugins": [
+    "babel",
+    "jest"
+  ],
+  "rules": {
+    "comma-dangle": ['error', 'never'],
+    "import/no-extraneous-dependencies": [2, { devDependencies: true }],
+    'jest/no-disabled-tests': 'warn',
+    'jest/no-focused-tests': 'error',
+    'jest/no-identical-title': 'error',
+  },
+  "env": {
+    "jest/globals": true
+  }
+}

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package lot;
+
+service Lot {
+  rpc SaveLot (LotRequest) returns (LotData);
+  rpc GetLots (LotsRequest) returns (LotsReply);
+}
+
+message LotsRequest {
+
+}
+
+message LotRequest {
+ string name = 1;
+}
+
+message LotData {
+  string id = 1;
+  string name = 2;
+}
+
+message LotsReply {
+  repeated LotData lots = 1;
+}

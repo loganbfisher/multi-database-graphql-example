@@ -1,0 +1,17 @@
+version: '3'
+services:
+  lot-server:
+    build: ./
+    command: npm run start
+    volumes:
+      - .:/usr/src/app/
+    ports:
+      - "50051:50051"
+    links:
+      - lot-db:mongo
+    depends_on:
+      - lot-db
+  lot-db:
+    image: mongo
+    ports:
+      - "27017:27017"

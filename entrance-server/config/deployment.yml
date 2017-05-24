@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: status-server
+    type: backend
+  name: status-server
+  namespace: deploy-tracker
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: status-server
+        type: backend
+    spec:
+      containers:
+      - image: quay.io/parkhubprime/status-server
+        name: status-server
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: http_proxy
+          value: $(NODE_NAME):4140
+        ports:
+         - containerPort: 50051
+           name: status-server

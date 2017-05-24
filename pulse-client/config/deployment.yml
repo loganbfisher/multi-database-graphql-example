@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: status-client
+    type: api
+  name: status-client
+  namespace: deploy-tracker
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: status-client
+        type: api
+    spec:
+      containers:
+      - image: quay.io/parkhubprime/status-client
+        name: status-client
+        ports:
+         - containerPort: 3000
+           name: statusclient
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+
+
+
