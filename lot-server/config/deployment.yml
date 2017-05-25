@@ -2,21 +2,21 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    name: status-server
+    name: lot-server
     type: backend
-  name: status-server
-  namespace: deploy-tracker
+  name: lot-server
+  namespace: prototype
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: status-server
+        name: lot-server
         type: backend
     spec:
       containers:
-      - image: quay.io/parkhubprime/status-server
-        name: status-server
+      - image: quay.io/parkhubprime/lot-server
+        name: lot-server
         env:
         - name: NODE_NAME
           valueFrom:
@@ -30,4 +30,4 @@ spec:
           value: $(NODE_NAME):4140
         ports:
          - containerPort: 50051
-           name: status-server
+           name: lot-server

@@ -11,10 +11,12 @@ services:
       - lotserver_lot-server_1:lot-server
       - entranceserver_entrance-server_1:entrance-server
       - laneserver_lane-server_1:lane-server
+      - companyserver_company-server_1:company-server
     networks:
       - default
       - entrance-server
       - lane-server
+      - company-server
 networks:
   default:
     external:
@@ -25,3 +27,6 @@ networks:
   lane-server:
     external:
       name: laneserver_default
+  company-server:
+    external:
+      name: companyserver_default

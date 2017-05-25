@@ -2,24 +2,24 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    name: mongodb 
+    name: lane-db
     type: db
-  name: mongodb
-  namespace: deploy-tracker
+  name: lane-db
+  namespace: prototype
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: mongodb
+        name: lane-db
         type: db
     spec:
       containers:
       - image: mongo
-        name: mongodb
+        name: lane-db
         ports:
          - containerPort: 27017
-           name: mongodb
+           name: lane-db
         volumeMounts:
           - name: mongodb-persistent-storage
             mountPath: /data/db

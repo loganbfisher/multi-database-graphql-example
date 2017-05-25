@@ -8,16 +8,18 @@ service Lot {
 }
 
 message LotsRequest {
-
+  string companyId = 1;
 }
 
 message LotRequest {
  string name = 1;
+ string companyId = 2;
 }
 
 message LotData {
   string id = 1;
   string name = 2;
+  string companyId = 3;
 }
 
 message LotsReply {

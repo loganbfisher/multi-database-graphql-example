@@ -2,21 +2,21 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    name: entrance-server
+    name: company-server
     type: backend
-  name: entrance-server
+  name: company-server
   namespace: prototype
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: entrance-server
+        name: company-server
         type: backend
     spec:
       containers:
-      - image: quay.io/parkhubprime/entrance-server
-        name: entrance-server
+      - image: quay.io/parkhubprime/company-server
+        name: company-server
         env:
         - name: NODE_NAME
           valueFrom:
@@ -30,4 +30,4 @@ spec:
           value: $(NODE_NAME):4140
         ports:
          - containerPort: 50051
-           name: entrance-server
+           name: company-server

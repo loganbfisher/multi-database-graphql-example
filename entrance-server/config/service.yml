@@ -2,16 +2,15 @@ kind: Service
 apiVersion: v1
 metadata:
   labels:
-    name: status-server
+    name: entrance-server
     type: backend
-  name: status-server
-  namespace: deploy-tracker
+  name: entrance-server
+  namespace: prototype
 spec:
   clusterIP: None
-  ports: 
+  ports:
     - name: grpc
       port: 50051
   selector:
-    name: status-server
-    type: backend 
-
+    name: entrance-server
+    type: backend

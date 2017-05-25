@@ -2,24 +2,24 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    name: mongodb 
+    name: lot-db
     type: db
-  name: mongodb
-  namespace: deploy-tracker
+  name: lot-db
+  namespace: prototype
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: mongodb
+        name: lot-db
         type: db
     spec:
       containers:
       - image: mongo
-        name: mongodb
+        name: lot-db
         ports:
          - containerPort: 27017
-           name: mongodb
+           name: lot-db
         volumeMounts:
           - name: mongodb-persistent-storage
             mountPath: /data/db

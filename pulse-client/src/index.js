@@ -4,7 +4,7 @@ import graphqlHTTP from 'express-graphql';
 import bodyParser from 'body-parser';
 
 import schema from './graphql';
-import api from './routes/api';
+import pulse from './routes/pulse';
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.options('*', cors());
 
 app.use(bodyParser.json());
 
-app.use('/api', api);
+app.use('/pulse', pulse);
 
 app.use('/graphql', graphqlHTTP({
   schema,

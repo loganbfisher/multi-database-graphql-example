@@ -1,5 +1,6 @@
 import {
-  GraphQLList
+  GraphQLList,
+  GraphQLString
 } from 'graphql';
 
 import promisize from '../../../lib/promisize';
@@ -10,9 +11,11 @@ const getLots = promisize(lotClient.getLots, lotClient);
 
 export default {
   type: new GraphQLList(lotType),
-  args: {},
-  resolve: () => {
-    return getLots({})
+  args: {
+    companyId: { type: GraphQLString }
+  },
+  resolve: (_, { companyId }) => {
+    return getLots({ companyId })
       .then((resp) => {
         return resp.lots;
       })

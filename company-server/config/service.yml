@@ -2,9 +2,9 @@ kind: Service
 apiVersion: v1
 metadata:
   labels:
-    name: lot-server
+    name: company-server
     type: backend
-  name: lot-server
+  name: company-server
   namespace: prototype
 spec:
   clusterIP: None
@@ -12,5 +12,5 @@ spec:
     - name: grpc
       port: 50051
   selector:
-    name: lot-server
+    name: company-server
     type: backend

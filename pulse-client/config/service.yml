@@ -2,18 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    name: status-client
+    name: pulse-client
     type: api
-  name: status-client 
-  namespace: deploy-tracker
+  name: pulse-client
+  namespace: prototype
 spec:
   clusterIP: None
-  ports: 
+  ports:
     - port: 3000
       name: http
   selector:
-    name: status-client
+    name: pulse-client
     type: api
-
-
-

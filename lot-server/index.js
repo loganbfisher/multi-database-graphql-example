@@ -22,7 +22,8 @@ function injectClients({ dbConn }) {
 
               cb(null, {
                 id: newRecord._id.toString(),
-                name: newRecord.name
+                name: newRecord.name,
+                companyId: newRecord.companyId
               });
           })
           .catch((err) => {
@@ -42,14 +43,15 @@ function injectClients({ dbConn }) {
       console.log('REQUEST PARAMS: ', data);
 
       try {
-        return collection.find().toArray()
+        return collection.find({ companyId: data.companyId }).toArray()
             .then((response) => {
               console.log('Found Data! ', response);
 
               const mappedData = response.map((record) => {
                 return {
                   id: record._id.toString(),
-                  name: record.name
+                  name: record.name,
+                  companyId: record.companyId
                 }
               })
 

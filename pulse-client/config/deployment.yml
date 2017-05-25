@@ -2,24 +2,24 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    name: status-client
+    name: pulse-client
     type: api
-  name: status-client
-  namespace: deploy-tracker
+  name: pulse-client
+  namespace: prototype
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: status-client
+        name: pulse-client
         type: api
     spec:
       containers:
-      - image: quay.io/parkhubprime/status-client
-        name: status-client
+      - image: quay.io/parkhubprime/pulse-client
+        name: pulse-client
         ports:
          - containerPort: 3000
-           name: statusclient
+           name: pulseclient
         env:
         - name: NODE_NAME
           valueFrom:
@@ -29,6 +29,3 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-
-
-

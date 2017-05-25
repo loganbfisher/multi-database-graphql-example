@@ -19,6 +19,9 @@ export default new GraphQLObjectType({
     name: {
       type: GraphQLString
     },
+    companyId: {
+      type: GraphQLString
+    },
     entrances: {
       type: new GraphQLList(entranceType),
       args: {
