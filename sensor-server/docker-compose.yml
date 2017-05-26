@@ -1,0 +1,17 @@
+version: '3'
+services:
+  sensor-server:
+    build: ./
+    command: npm run start
+    volumes:
+      - .:/usr/src/app/
+    ports:
+      - "50055:50051"
+    links:
+      - sensor-db:mongo
+    depends_on:
+      - sensor-db
+  sensor-db:
+    image: mongo
+    ports:
+      - "27021:27017"

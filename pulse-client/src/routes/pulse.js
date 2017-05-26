@@ -3,6 +3,7 @@ import entranceClient from '../clients/entrance_client';
 import lotClient from '../clients/lot_client';
 import laneClient from '../clients/lane_client';
 import companyClient from '../clients/company_client';
+import sensorClient from '../clients/sensor_client';
 
 import promisize from '../lib/promisize';
 
@@ -12,11 +13,22 @@ const saveLane = promisize(laneClient.saveLane, laneClient);
 const saveEntranceSensor = promisize(entranceClient.saveEntranceSensor, entranceClient);
 const saveLaneSensor = promisize(laneClient.saveLaneSensor, laneClient);
 const saveCompany = promisize(companyClient.saveCompany, companyClient);
+const saveSensor = promisize(sensorClient.saveSensor, sensorClient);
 
 const client = express.Router();
 
 client.post('/lots', (req, res) => {
   return saveLot(req.body)
+    .then((resp) => {
+      res.json(resp);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+client.post('/sensors', (req, res) => {
+  return saveSensor(req.body)
     .then((resp) => {
       res.json(resp);
     })

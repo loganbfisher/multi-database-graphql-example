@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: sensor-server
+    type: backend
+  name: sensor-server
+  namespace: prototype
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: sensor-server
+        type: backend
+    spec:
+      containers:
+      - image: quay.io/parkhubprime/sensor-server
+        name: sensor-server
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: http_proxy
+          value: $(NODE_NAME):4140
+        ports:
+         - containerPort: 50051
+           name: sensor-server

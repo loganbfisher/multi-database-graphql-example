@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package sensor;
+
+service Sensor {
+  rpc SaveSensor (SensorRequest) returns (SensorData);
+}
+
+message SensorRequest {
+ string name = 1;
+ optional bool assigned = 2;
+}
+
+message SensorData {
+  string id = 1;
+  string name = 2;
+  bool assigned = 3;
+}

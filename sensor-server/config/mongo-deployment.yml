@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: sensor-db
+    type: db
+  name: sensor-db
+  namespace: prototype
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: sensor-db
+        type: db
+    spec:
+      containers:
+      - image: mongo
+        name: sensor-db
+        ports:
+         - containerPort: 27017
+           name: sensor-db
+        volumeMounts:
+          - name: mongodb-persistent-storage
+            mountPath: /data/db
+      volumes:
+        - name: mongodb-persistent-storage
+          emptyDir: {}

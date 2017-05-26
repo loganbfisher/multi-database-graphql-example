@@ -147,9 +147,12 @@ function injectClients({ dbConn }) {
   server.start();
 }
 
+const NODE_NAME = process.env.NODE_NAME;
+const DB_URL = NODE_NAME ? `mongodb://${NODE_NAME}:7474/lane` : 'mongodb://lane-db/lane';
+
 async function startServer() {
   try {
-    const dbConn = await createDBClient({ dbUrl: 'mongodb://lane-db/lane' });
+    const dbConn = await createDBClient({ dbUrl: DB_URL });
 
     injectClients({ dbConn });
   } catch (err) {

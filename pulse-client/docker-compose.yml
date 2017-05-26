@@ -12,11 +12,13 @@ services:
       - entranceserver_entrance-server_1:entrance-server
       - laneserver_lane-server_1:lane-server
       - companyserver_company-server_1:company-server
+      - sensorserver_sensor-server_1:sensor-server
     networks:
       - default
       - entrance-server
       - lane-server
       - company-server
+      - sensor-server
 networks:
   default:
     external:
@@ -29,4 +31,7 @@ networks:
       name: laneserver_default
   company-server:
     external:
-      name: companyserver_default
+      name: sensorserver_default
+  sensor-server:
+    external:
+      name: sensorserver_default

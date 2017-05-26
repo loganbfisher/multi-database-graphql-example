@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    name: sensor-server
+    type: backend
+  name: sensor-server
+  namespace: prototype
+spec:
+  clusterIP: None
+  ports:
+    - name: grpc
+      port: 50051
+  selector:
+    name: sensor-server
+    type: backend
